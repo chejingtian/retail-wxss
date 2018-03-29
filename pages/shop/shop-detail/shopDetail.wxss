@@ -1,0 +1,580 @@
+page {
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+.isScroll-view{
+  overflow-y:scroll; 
+}
+.bannerImg {
+  width: 750rpx;
+  height: 420rpx;
+  background-color: #f4f4f4;
+}
+
+.bannerImg swiper {
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.swiper-item {
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.swiper-item image {
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.shopDetail {
+  padding-left: 30rpx;
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 12rpx;
+}
+
+.shopLogo {
+  position: absolute;
+  top: -24rpx;
+  left: 30rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border: solid rgb(223, 223, 223) 1rpx;
+}
+
+.shopLogo image {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.shopInfo {
+  margin-left: 150rpx;
+  padding: 30rpx 0 20rpx 0;
+}
+
+.shopTitle {
+  width: 532rpx;
+  height: 38rpx;
+  margin-bottom: 10rpx;
+  line-height: 38rpx;
+  font-size: 36rpx;
+  color: rgb(51, 51, 51);
+  font-family: PingFangSC-Medium;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shopTags {
+  width: 544rpx;
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  color: rgb(102, 102, 102);
+  font-family: PingFangSC-Regular;
+}
+
+.shopTag {
+  margin-right: 12rpx;
+  padding-right: 12rpx;
+  position: relative;
+}
+
+.shopTag::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 8rpx;
+  right: -2rpx;
+  width: 2rpx;
+  height: 20rpx;
+  background-color: rgb(102, 102, 102);
+}
+
+.shopTag:last-child::after {
+  width: 0;
+}
+
+.shopSign {
+  font-size: 24rpx;
+  display: flex;
+}
+
+.greenRecommon {
+  width: 180rpx;
+  border-radius: 160rpx;
+  border: solid rgb(2, 166, 162) 1rpx;
+  color: rgb(2, 166, 162);
+  display: flex;
+}
+
+.greenRecommon image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 22rpx;
+}
+
+.greenRun {
+  width: 180rpx;
+  border-radius: 160rpx;
+  border: solid rgb(0, 141, 87) 1rpx;
+  color: rgb(0, 141, 87);
+  display: flex;
+}
+
+.greenRun image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 22rpx;
+}
+
+.shopAddressInfo {
+  display: flex;
+  border-top: solid rgb(241, 241, 241) 2rpx;
+}
+
+.shopAddress {
+  width: 540rpx;
+  height: 88rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: PingFang-SC-Regular;
+  font-size: 24rpx;
+  line-height: 88rpx;
+}
+
+.icon {
+  display: flex;
+}
+
+.addressIcon, .phoneIcon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.promitionInfo {
+  margin-bottom: 12rpx;
+  background-color: #fff;
+}
+
+.promition, .coupon {
+  margin-left: 40rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: rgb(51, 51, 51);
+  font-family: PingFangSC-Regular;
+}
+
+.couponContent {
+  width: 85%;
+}
+
+.coupon image, .promition image {
+  width: 16rpx;
+  height: 28rpx;
+}
+
+.coupon {
+  border-bottom: solid rgb(241, 241, 241) 2rpx;
+}
+
+.promotionSign, .couponSign {
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  background: rgb(204, 29, 37);
+  color: #fff;
+  margin-right: 16rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.couponSign {
+  background: rgb(223, 175, 125);
+}
+
+.section {
+  background-color: #fff;
+  padding-top: 40rpx;
+  margin-bottom: 12rpx;
+}
+
+.sectionTitle {
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.commentTitle {
+  display: flex;
+}
+
+.commentNumber {
+  width: 77%;
+}
+
+.allComment {
+  display: flex;
+  height: 24rpx;
+}
+
+.allComment image {
+  width: 16rpx;
+  height: 28rpx;
+  margin-top: 6rpx;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+}
+
+.commentList {
+  margin-left: 32rpx;
+}
+
+.commentItem {
+  margin-top: 36rpx;
+  padding-bottom: 36rpx;
+  border-bottom: solid rgb(241, 241, 241) 2rpx;
+}
+
+.commentItem:last-child {
+  border: 0;
+}
+
+.commentPerson {
+  display: flex;
+}
+
+.personInfo {
+  width: 64%;
+  margin-left: 18rpx;
+  font-family: PingFang-SC-Regular;
+}
+
+.personName {
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+}
+
+.commentScore {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  display: flex;
+}
+
+.personImg {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.personImg image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.commentTime {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+}
+
+.star {
+  margin-left: 12rpx;
+}
+
+.star image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 6rpx;
+}
+
+.commentContent {
+  margin-top: 24rpx;
+  margin-left: 96rpx;
+}
+
+.commentWord, .productName, .commentTag {
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  line-height: 42rpx;
+  margin-bottom: 12rpx;
+}
+
+.productName {
+  color: #999;
+}
+
+.commentImg {
+  height: 190rpx;
+}
+
+.commentImg image {
+  width: 190rpx;
+  height: 190rpx;
+  margin-right: 12rpx;
+}
+
+.sceneSection {
+  margin-bottom: 94rpx;
+}
+
+.imgList {
+  margin-top: 36rpx;
+}
+
+.imgItem {
+  width: 750rpx;
+  height: 420rpx;
+  margin-bottom: 12rpx;
+}
+
+.imgItem image {
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.footer {
+  width: 100%;
+  height: 94rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  border-top: solid rgb(224, 224, 224) 1rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 4rpx;
+}
+
+.allGoods, .brandDetail, .goComment {
+  width: 33.3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allGoods, .brandDetail {
+  border-right: solid rgb(224, 224, 224) 1rpx;
+}
+
+.singleGood {
+  clear: both;
+  overflow: hidden;
+}
+
+.singleGood .goodsImage {
+  width: 230rpx;
+  height: 230rpx;
+  background: #eee;
+  float: left;
+  margin: 0rpx 24rpx 30rpx 30rpx;
+}
+
+.singleGood .goodsInfo {
+  float: left;
+}
+
+.singleGood .goods-name {
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 339rpx;
+  white-space: normal;
+  height: 84rpx;
+}
+
+.singleGood .pre-price {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  margin-left: 10rpx;
+  position: relative;
+}
+
+.pre-price::after {
+  position: absolute;
+  top: 17rpx;
+  left: 1rpx;
+  content: '';
+  width: 90rpx;
+  height: 2rpx;
+  background: rgb(153, 153, 153);
+}
+
+.singleGood .cur-price {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+}
+
+.count-down {
+  margin-top: -10rpx;
+}
+
+/*爆款列表  */
+
+.goods-item {
+  display: inline-block;
+  width: 339rpx;
+  margin: 0 13rpx 20rpx 13rpx;
+  padding-bottom: 20rpx;
+}
+
+.goods-list .goodsImage {
+  width: 339rpx;
+  height: 339rpx;
+  background: #eee;
+}
+
+.goods-list .goods-item:first-child {
+  margin-left: 30rpx;
+}
+
+.goods-list .goods-item:last-child {
+  margin-right: 30rpx;
+}
+
+.goods-list .goods-name {
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  height: 84rpx;
+}
+
+.goods-list .name-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 339rpx;
+  white-space: normal;
+}
+
+.goods-list .pre-price {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  margin-left: 10rpx;
+  position: relative;
+}
+
+.goods-list .pre-price::after {
+  position: absolute;
+  top: 17rpx;
+  left: 1rpx;
+  content: '';
+  width: 90rpx;
+  height: 2rpx;
+  background: rgb(153, 153, 153);
+}
+
+.goods-list-scroll {
+  height: 572rpx;
+  display: flex;
+  white-space: nowrap;
+}
+
+.goods-list .cur-price {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+}
+
+.limit, .presell {
+  text-align: center;
+  display: inline-block;
+  width: 28rpx;
+  height: 28rpx;
+  font-size: 20rpx;
+  color: rgb(255, 255, 255);
+  background: rgb(223, 175, 125);
+  position: relative;
+  top: -4rpx;
+}
+
+/*弹出层样式  */
+
+.buydes-dialog-container {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  background-color: rgba(15, 15, 26, 0.7);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.buydes-dialog-container-top {
+  flex-grow: 1;
+}
+
+.buydes-dialog-container-bottom {
+  flex-grow: 0;
+  bottom: 0;
+  background: #fff;
+}
+
+.buydes-dialog-container-bottom-item {
+  padding: 24rpx;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1rpx solid #eee;
+  position: relative;
+}
+.dialog-content{
+  padding:20rpx;
+  font-size: 24rpx;
+    overflow-y: scroll;
+    max-height: 430rpx;
+
+}
+.godle{
+  color:#dfaf7d;
+  margin-top:30rpx;
+}
+.btn-confirm{
+    background-color:#dfaf7d;
+    height:100rpx;
+    width: 100%;
+    color:#fff;
+    text-align: center;
+    line-height: 100rpx;
+}
+.container-column .coupon{
+  width: 710rpx;
+  height:212rpx;
+  margin:0 auto;
+  margin-bottom:20rpx;
+  border:none;
+  font-size: 24rpx;
+  color:#999;
+}
+.coupon .coupon-item-left{
+  padding:30rpx;
+  width: 440rpx;
+  height:140rpx;
+  background: #fff;
+  margin-left:6rpx;
+    border-radius: 10rpx;
+    box-shadow:0px 0px 5px 0px rgba(0,0,0,0.5);
+
+}
+.coupon .coupon-item-right{
+  width: 200rpx;
+  height:200rpx;
+  background: #dfaf7d;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height:200rpx;
+  color:#fff;
+}
+

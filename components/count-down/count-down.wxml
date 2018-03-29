@@ -1,0 +1,11 @@
+<!--components/count-down.wxml-->
+<view class="countDownTimeView countDownAllView">
+  <view class=" countDownTimeText" style="margin-top:0rpx; ">
+    <view style='float:left;'>{{countDownDay}}</view> 天</view>
+  <view class=" countDownTimeText">
+    <view class='voteText' style='background:{{countDownStyle.background}};color:{{countDownStyle.color}}' >{{countDownHour}}</view> : </view>
+  <view class=" countDownTimeText">
+    <view class='voteText' style='background:{{countDownStyle.background}};color:{{countDownStyle.color}}' >{{countDownMinute}}</view> : </view>
+  <view class=" countDownTimeText"  >
+    <view class='voteText' style='background:{{countDownStyle.background}};color:{{countDownStyle.color}}'  >{{countDownSecond}}</view></view>
+</view>

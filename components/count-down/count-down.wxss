@@ -1,0 +1,20 @@
+/* components/count-down.wxss */
+.countDownTimeView{
+  height:22rpx;
+  font-size: 22rpx;
+}
+.voteText{
+  text-align: center;
+  line-height: 30rpx;
+  float: left;
+  min-width: 30rpx;
+  height:30rpx;
+  /* color: #fff; */
+  /* background: #000; */
+}
+.countDownTimeText{
+  float: left;
+}
+.white{
+  background: #dfaf7d;
+}

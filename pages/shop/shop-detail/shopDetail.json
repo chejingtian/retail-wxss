@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "sales-list": "../../../components/sales-list/sales-list",
+    "count-down": "../../../components/count-down/count-down"
+  }
+}

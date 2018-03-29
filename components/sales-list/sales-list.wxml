@@ -1,0 +1,34 @@
+<!--components/sales-list.wxml-->
+<!--一个导购员时  -->
+<view wx:if="{{salesInfo.length === 1}}" class='sales-single'>
+  <view class='single-header-image-box'>
+    <view wx:if="{{salesInfo[0].userStatus == 0}}" class='single-image-cover'></view>
+    <image wx:if="{{salesInfo[0].userStatus == 1}}" class='single-sales-hat' src='./images/WechatIMG5.png'></image>
+    <image wx:if="{{salesInfo[0].userStatus == 0}}" class='single-sales-hat' src='./images/WechatIMG6.png'></image>
+    <image src="{{salesInfo[0].avatar}}" class="single-sales-image" />
+    <view wx:if="{{salesInfo[0].userStatus == 1}}" class='single-online-statue online'>在线</view>
+    <view wx:if="{{salesInfo[0].userStatus == 0}}" class='single-online-statue offline'>离线</view>
+  </view>
+  <view class='single-sales-name'>导购员-{{salesInfo[0].nickName}}</view>
+  <view class='single-sales-grade'>{{salesInfo[0].labelList ? salesInfo[0].labelList[0] : "家居顾问"}}</view>
+  <view bindtap='btnCall' data-num="{{salesInfo[0].mobile}}" class='single-btn-connect'>联系TA</view>
+</view>
+<!--多个导购员时  -->
+<view wx:else class='component-sales'>
+  <text class='sales-title'>导购员</text>
+  <scroll-view class="sales-scroll-view" scroll-x="true">
+    <view class="sales-box" wx:for="{{salesInfo}}">
+      <view class='header-image-box'>
+        <image wx:if="{{item.userStatus == 1}}" class='sales-hat' src='./images/WechatIMG5.png'></image>
+        <image wx:if="{{item.userStatus == 0}}" class='sales-hat' src='./images/WechatIMG6.png'></image>
+        <image src="{{item.avatar}}" class="sales-image" />
+        <view class='image-cover'></view>
+        <view wx:if="{{item.userStatus == 1}}" class='online-statue online'>在线</view>
+        <view wx:if="{{item.userStatus == 0}}" class='online-statue offline'>离线</view>
+      </view>
+      <view class='sales-name'>{{item.nickName}}</view>
+      <view class='sales-grade'>{{item.labelList ? item.labelList[0] : "家居顾问"}}</view>
+      <view bindtap='btnCall' data-num="{{item.mobile}}" class='btn-connect'>联系TA</view>
+    </view>
+  </scroll-view>
+</view>

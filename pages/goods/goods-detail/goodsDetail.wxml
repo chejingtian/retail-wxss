@@ -1,0 +1,340 @@
+<!--pages/goods/goods-detail/goodsDetail.wxml-->
+<scroll-view scroll-y="{{isScroll}}" bindscroll="scroll" scroll-into-view="list-{{id}}" style="height:100%">
+  <view class='nav-bar' style='opacity:{{navOpacity}}'>
+    <block wx:for="{{classfiyNav}}">
+      <text class="{{(id == index || navActive == index) ? 'active' : ''}}" bindtap="tabClassfiy" id="nav-{{index}}">
+      {{item.text}}
+      </text>
+    </block>
+  </view>
+
+  <swiper id="list-0" style='width:750rpx; height:750rpx;' autoplay='true' indicator-dots='true' indicator-color='#999' indicator-active-color='#fff'>
+    <block wx:for="{{banners}}" wx:key="*this">
+      <swiper-item bindtap="previewBanners">
+        <image bindload="imageLoad" data-index="{{ index }}" src='{{item.url}}' mode='widthFix' style='width:{{ banners[index].width }}px; height:{{ banners[index].height }}px;'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--限时购  -->
+  <view wx:if="{{priceShowType == 1}}" class='count-down-container limite-sales'>
+    <view class='count-title'>
+      <text style='font-size:40rpx;color:#fff;line-height:100rpx;'>限时购</text>
+    </view>
+    <view class='count-down-box'>
+      <view wx:if="{{limitedTimeType == 1}}">
+        <view>距活动结束</view>
+        <count-down showTime="{{itemPromotionInfo.endTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+      <view wx:if="{{limitedTimeType == 2}}">
+        <view> 距活动开始</view>
+        <count-down showTime="{{itemPromotionInfo.startTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+      <view wx:if="{{limitedTimeType == 3}}">活动结束</view>
+    </view>
+  </view>
+  <!--定金预付  -->
+  <view wx:if="{{priceShowType == 2}}" class='count-down-container limite-sales'>
+    <view class='count-title'>
+      <text style='font-size:28rpx;color:#fff;line-height:100rpx;'>定金</text>
+      <text style="font-size:40rpx;color:#fff;line-height:100rpx;">￥{{itemPromotionInfo.bookingAmount}}</text>
+    </view>
+    <view class='count-down-box'>
+      <view wx:if="{{limitedTimeType == 1}}">
+        <view>距活动结束</view>
+        <count-down showTime="{{itemPromotionInfo.bookingStartTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+      <view wx:if="{{limitedTimeType == 2}}">
+        <view> 距活动开始</view>
+        <count-down showTime="{{itemPromotionInfo.bookingStartTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+      <view wx:if="{{limitedTimeType == 3}}">活动结束</view>
+    </view>
+  </view>
+
+  <!--拼团 -->
+  <view wx:if="{{priceShowType == 3 && activityStatus != 3}}" class='count-down-container limite-sales'>
+    <view class='count-title'>
+      <text style='font-size:28rpx;color:#fff;line-height:100rpx;'>定金</text>
+      <text style="font-size:40rpx;color:#fff;line-height:100rpx;">￥{{itemPromotionInfo.bookingAmount}}</text>
+      <text class="final-payment">尾款￥{{itemPromotionInfo.skuPromotionPrice}}</text>
+    </view>
+    <view class='count-down-box'>
+      <view wx:if="{{limitedTimeType == 1}}">
+        <view>距活动结束</view>
+        <count-down showTime="{{itemPromotionInfo.bookingEndTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+      <view wx:if="{{limitedTimeType == 2}}">
+        <view> 距活动开始</view>
+        <count-down showTime="{{itemPromotionInfo.bookingStartTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+    </view>
+  </view>
+  <!--拼团结束  -->
+  <view wx:if="{{priceShowType == 3 && activityStatus == 3}}" style='background:#999' class='count-down-container limite-sales'>
+    <view class='count-title'>
+      <text style='font-size:28rpx;color:#fff;line-height:100rpx;'>定金</text>
+      <text style="font-size:40rpx;color:#fff;line-height:100rpx;">￥{{itemPromotionInfo.bookingAmount}}</text>
+      <text class="final-payment" style='background:#ababab;position:relative;top:-8rpx'>尾款￥{{itemPromotionInfo.skuPromotionPrice}}</text>
+    </view>
+    <view class='count-down-box'>
+      <text style="font-size:28rpx;line-height:80rpx">已结束</text>
+    </view>
+  </view>
+
+  <!--定金翻倍  -->
+  <view wx:if="{{priceShowType == 4 && activityStatus == 1}}" class='count-down-container limite-sales'>
+    <view class='count-title'>
+      <text style='font-size:28rpx;color:#fff;line-height:100rpx;'>定金</text>
+      <text style="font-size:40rpx;color:#fff;line-height:100rpx;">￥{{itemPromotionInfo.bookingAmount}}</text>
+      <text class="final-payment" style='background:#fc2c29'>定金翻{{itemPromotionInfo.bookingFavorValue}}倍</text>
+    </view>
+    <view class='count-down-box'>
+      <view wx:if="{{limitedTimeType == 0}}">
+        <view>距预约结束</view>
+        <count-down showTime="{{itemPromotionInfo.bookingEndTime}}" countDownStyle="{{countDownStyle}}"></count-down>
+      </view>
+    </view>
+  </view>
+  <!--  -->
+  <view class='productShortInfo'>
+    <view class='title'>
+      {{goodsInfo.pdtName}}
+      <view class='subTitle'>
+        <text>{{goodsInfo.productSecondName}}</text>
+      </view>
+    </view>
+
+    <!--限时购  -->
+    <view wx:if="{{priceShowType == 0}}">
+      <view class='market-promotion'>
+        <text class='price'>¥{{goodsInfo.salePrice}}</text>
+        <text class='limite-price'>限时价</text>
+        <text class='repertory'>限购: 2</text>
+        <text class='repertory'>库存: 275</text>
+      </view>
+      <view class='market-price'>
+        <text>¥ {{goodsInfo.salePrice}}</text>
+      </view>
+    </view>
+    <!--付费预定  -->
+    <view wx:if="{{priceShowType == 2}}">
+      <view class='market-promotion'>
+        <text class='price'>¥{{goodsInfo.salePrice}}</text>
+        <text class='limite-price'>限时价</text>
+        <text class='repertory'>限购: 2</text>
+        <text class='repertory'>库存: 275</text>
+      </view>
+      <view class='market-price'>
+        <text>¥ {{goodsInfo.salePrice}}</text>
+      </view>
+    </view>
+    <!--拼团  -->
+    <view wx:if="{{priceShowType == 3}}">
+      <view class='market-promotion'>
+        <text class='group-price' style=''>拼团价</text>
+        <text class='price'>¥{{goodsInfo.salePrice}}</text>
+        <text class='group-price' style='margin-left:20rpx;'>标价 ￥9960</text>
+        <text class='repertory'>库存: 275</text>
+      </view>
+      <view class='prograss-bar-container' style='clear:both;overflow:hidden'>
+        <view>
+          <view class='prograss-bar-banner'>
+            <view class='prograss-bar-item' style='width:{{progressWidth}}'>
+            </view>
+          </view>
+          <view wx:if="{{limitedTimeType == 3 && itemPromotionInfo.offeredNumber < 20}}" style='font-size:28rpx; color:#ff454a'> 拼团失败</view>
+          <view wx:if="{{limitedTimeType == 3 && itemPromotionInfo.offeredNumber >= 20}}" style='font-size:28rpx; color:rgb(223,175,125)'> 已成团</view>
+        </view>
+      </view>
+      <view style='width:100%'>
+        <text style='font-size:22rpx;color:#999;margin-left:30rpx'>20人成团 已有{{itemPromotionInfo.offeredNumber}}人参团</text>
+      </view>
+    </view>
+    <!--定金翻倍预热  -->
+    <view wx:if="{{priceShowType == 4 && activityStatus == 0}}">
+      <view class='market-promotion'>
+        <text class='price'>¥{{goodsInfo.salePrice}}</text>
+        <text class='repertory'>库存: {{itemPromotionInfo.promotionStock}}</text>
+      </view>
+      <view class='market-price'>
+        <text>¥ {{goodsInfo.salePrice}}</text>
+      </view>
+      <view class='earnest-double' style='font-size:24rpx'>
+        <text class='double-tag'>定金翻倍</text>
+        <text>距开始</text>
+        <count-down class='count-down-double' showTime="{{itemPromotionInfo.bookingStartTime}}" countDownStyle="{{doubleDownStyle}}"></count-down>
+        <text style="color:#ff454a">{{itemPromotionInfo.showTime}} 预付售价￥{{itemPromotionInfo.promotionPrice}} 定金￥{{itemPromotionInfo.bookingAmount}}可抵扣￥{{itemPromotionInfo.deductibleAmount}}</text>
+      </view>
+    </view>
+    <view class='dispatch-range'>
+      <view wx:if="{{priceShowType == 2 || priceShowType == 3 }}">
+        <text>付尾款:{{itemPromotionInfo.startTime + '至' + itemPromotionInfo.endTime}}</text>
+      </view>
+      <text wx:if="{{priceShowType != -1}}">配送：仅支持南京同城配送</text>
+    </view>
+    <!--促销  -->
+    <view class="promitionInfo">
+      <view wx:if="{{ priceShowType != -1 && listItemCouponInfo.length >= 1 }}" data-index="1" bindtap="showModal" class='coupon'>
+        <view class='couponSign'>券</view>
+        <view class='couponContent'></view>
+        <image src='../../images/shop/right_arrow.png'></image>
+      </view>
+      <view wx:if="{{priceShowType != -1 && listItemSubPromotionInfo.length >= 1}}" data-index="2" bindtap="showModal" class='promition'>
+        <view class='promotionSign'>促</view>
+        <view wx:for="{{listItemSubPromotionInfo}}" class='couponContent'>
+          <text wx:if="{{item.subpromotionTypeId == 32}}">{{'满' + item.orderFullAmount + '元减' + item.promotionAmount + '元' }}</text>
+          <text wx:elif="{{item.subpromotionTypeId == 33}}">{{'每' + item.orderFullAmount + '元减' + item.promotionAmount + '元,' + item.promotionMaxAmount + '元封顶' }}</text>
+          <text wx:elif="{{item.subpromotionTypeId == 34}}">
+          <view wx:for="{{item.promotionScopeAmount}}">
+          <text>
+          {{'满' + item.orderFullAmount + '元减' + item.promotionAmount + '元'}}
+          </text>
+        </view>
+        </text>
+      </view>
+      <image src='../../images/shop/right_arrow.png'></image>
+    </view>
+  </view>
+  <view wx:if="{{priceShowType == 3}}" class='group-booking'>
+    <text style='font-size:28rpx;color:#333;line-height:28rpx;margin-right:40rpx;'>拼团流程</text>
+    <text style='font-size:24rpx;color:#333;line-height:rpx;'>付定金 - 成团 - 付尾款 - 发货</text>
+    <view class='arrow'></view>
+  </view>
+  <view wx:if="{{priceShowType != -1}}" class='rule-wrap' data-index="3" bindtap="showModal">
+    <text>
+      延迟发货赔付 · 支持七天无理由退货
+      </text>
+    <view class='arrow'></view>
+  </view>
+  </view>
+  <view class='shopInfo' bindtap="toShopPage">
+    <view class='line' />
+    <view class='info'>
+      <image src='{{shopInfoBrief.shop_pic}}' mode='aspectFill' style='width: 53px; height: 53px' />
+      <view class='shop-title'>
+        {{shopInfoBrief.shop_name}}
+      </view>
+      <view class='shop-position'>上海真北商场百得胜店5楼</view>
+      <view class='btn-toShop'>进店逛逛</view>
+    </view>
+  </view>
+  <view class='modules'>
+    <view class='line' />
+    <view class='title'  bindtap="scrollModule" id="list-1">规格参数</view>
+    <view class='{{ module_num ? "module-box" : "" }}'>
+      <view wx:for="{{modules}}" class='detail' wx:key="{{index}}">
+        <view wx:if="{{item.value}}">
+          <view class='detail-title'>{{item.title}}</view>
+          <text>{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='btn-more {{module_num ? "btn-arrow-down" : "btn-arrow-up"}}' bindtap='showMore'>
+      {{module_num ? '查看更多': '收起'}}
+    </view>
+  </view>
+  <view class='shopGoodsDetail'>
+    <view class='line' />
+    <view bindtap="scrollModule" class='title' id="list-2">商品详情</view>
+    <view>
+      <rich-text nodes="{{goodsInfo.productTextVo.productHtml}}" bindtap="tap" />
+    </view>
+  </view>
+  <view class='recommandProduct'>
+    <view class='line' />
+    <view bindtap="scrollModule" class='title' id="list-3">相关推荐</view>
+    <view class='recommend' wx:if="{{goodsInfo.relationGoods.length >= 1}}">
+      <view wx:for="{{goodsInfo.relationGoods}}" class='recommend-item'>
+        <image></image>
+        <view class='goods-name'>{{item.pdtName}}</view>
+        <view class='goods-price'>
+          <text class='price-now'>¥{{item.discountPrice}}</text>
+          <text class='price-pre'>¥{{item.salePrice}} </text>
+        </view>
+      </view>
+    </view>
+    <view>
+    </view>
+  </view>
+  <!--延迟发货规则  -->
+  <view class="container-column buydes-dialog-container" wx:if="{{showModalStatus==3}}">
+    <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
+    <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
+      <block>
+        <view class='modal-content'>
+          <view class="buydes-dialog-container-bottom-item">服务保障</view>
+
+          <view wx:for="{{goodsInfo.goodsServiceTags}}">
+            <view class='rule-title'>{{item.tagName}}</view>
+            <text class='rule-text'>{{item.tagDesc}}</text>
+          </view>
+
+
+        </view>
+
+        <view bindtap="hideModal" class='btn-confirm'>完成</view>
+      </block>
+    </view>
+  </view>
+
+  <!--弹出层-券 -->
+  <view class="container-column buydes-dialog-container" wx:if="{{showModalStatus==1}}">
+    <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
+    <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
+      <block>
+        <view class="buydes-dialog-container-bottom-item" style='border:none'>优惠券</view>
+        <view class='dialog-content'>
+          <view bindtap='btnCoupon' wx:for="{{listItemCouponInfo}}" class='coupon'>
+            <view class='coupon-item-left'>
+              <view style='color:#ff454a; font-size:30rpx;margin-bottom:15rpx;'>{{item.offerContent}}元</view>
+              <view>{{item.conditions}}</view>
+              <view>{{item.startT + '至' + item.endT}}</view>
+            </view>
+            <view class='coupon-item-right'>可领{{item.couponUseType}}次</view>
+
+          </view>
+        </view>
+        <view bindtap="hideModal" class='btn-confirm'>完成</view>
+      </block>
+    </view>
+  </view>
+  <!--弹出层-促 -->
+  <view class="container-column buydes-dialog-container" wx:if="{{showModalStatus==2}}">
+    <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
+    <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
+      <block>
+        <view class="buydes-dialog-container-bottom-item">订单满减</view>
+        <view wx:for="{{listItemSubPromotionInfo}}" class='dialog-content'>
+          <view wx:if="{{item.subpromotionTypeId == 32}}" style='font-size:30rpx;'> 满
+            <text class='godle'> {{item.orderFullAmount}}</text>元减
+            <text class='godle'>{{item.promotionAmount}}</text> 元
+          </view>
+          <view wx:elif="{{item.subpromotionTypeId == 33}}" style='font-size:30rpx;'> 满
+            <text class='godle'> {{item.orderFullAmount}}</text>元减
+            <text class='godle'>{{item.promotionAmount}}</text> 元
+          </view>
+          <view wx:elif="{{item.subpromotionTypeId == 34}}" style='font-size:30rpx;'>
+            <view wx:for="{{item.promotionScopeAmount}}">
+              <view>
+                满
+                <text class='godle'> {{item.orderFullAmount}}</text>元减
+                <text class='godle'>{{item.promotionAmount}}</text> 元
+              </view>
+            </view>
+          </view>
+          <view style='color:rgb(51,51,51);margin:20rpx 0;'> 使用时间：
+            <text class='godle'>{{item.startTime + '-' + item.endTime}}</text> </view>
+          <view style='color:rgb(51,51,51)'>
+            使用范围:
+            <text wx:if="{{item.scopeType == 1}}">店内全部商品可用 </text>
+            <text wx:elif="{{item.scopeType == 0}}">0</text>
+          </view>
+        </view>
+        <view bindtap="hideModal" class='btn-confirm'>确定</view>
+      </block>
+    </view>
+  </view>
+  <view style="height:100rpx;width:100%"></view>
+  <button class='toApp' open-type="launchApp" app-parameter="wechat" binderror="launchAppError">使用APP购买此商品</button>
+
+</scroll-view>

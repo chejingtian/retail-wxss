@@ -1,0 +1,52 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wxdc5bf9e69446347e",
+	"projectname": "retail_wsxx",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "店铺",
+					"pathName": "pages/shop/shop-detail/shopDetail",
+					"query": "shopId=135001",
+					"scene": "1008"
+				},
+				{
+					"id": 1,
+					"name": "商品",
+					"pathName": "pages/goods/goods-detail/goodsDetail",
+					"query": "shopId= 135001&goodsId=11107268",
+					"scene": "1008"
+				}
+			]
+		}
+	}
+}
